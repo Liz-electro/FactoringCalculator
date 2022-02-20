@@ -38,8 +38,6 @@ public class Scenarios {
         driver.manage().window().maximize();
         log.info("Cookies popup is closing");
         popup.closePopup();
-        //change to correct waiter
-        Thread.sleep(10000);
     }
 
     @And("input {string} invoice amount")
@@ -54,7 +52,7 @@ public class Scenarios {
     public void inputInterestRate(String interestRate) {
         log.info("Clear default values");
         calcPage.clearInterestRate();
-        log.info("User inputs " + interestRate + " interesd rate");
+        log.info("User inputs " + interestRate + " interest rate");
         calcPage.setInterestRate(interestRate);
     }
 
