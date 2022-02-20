@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'org.swedbank'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '5.6.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '5.6.0'
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java',
+            version: '4.0.0'
+    testImplementation("org.assertj:assertj-core:3.21.0")
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
+
+test {
+    group 'Verification'
+    description 'Runs functional tests'
+    include '*Runner*'
+    testLogging.showStandardStreams = true
+}
