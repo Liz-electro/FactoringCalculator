@@ -12,9 +12,9 @@ Feature: User should be able to use Factoring calculator to find out invoice fin
 
   Scenario: User is getting correct calculated results
     Given input "10000" invoice amount
-    And select "75" advance rate
-    And interest rate ""
-    And "" payment term
-    And "" comission fee
+    And select 75 advance rate
+    And input "10" interest rate
+    And select 90 payment term
+    And input "0.3" commission fee
     And click on the Calculate button
-    Then invoice expenses is calculated
+    Then "2.17" percent and "217.50" values are calculated

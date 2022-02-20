@@ -31,7 +31,7 @@ public class FactoringCalculatorPage {
         return this.FactoringCalculatorURL;
     }
 
-    public void selectAdvancedRate(int advancedRate) {
+    public void selectAdvanceRate(int advancedRate) {
         switch (advancedRate) {
             case 75:
                 driver.findElement(advanceRateField75).click();
@@ -65,12 +65,24 @@ public class FactoringCalculatorPage {
         }
     }
 
+    public void clearInvoiceAmountField(){
+        driver.findElement(invoiceAmountField).clear();
+    }
+
     public void setInvoiceAmountField(String invoiceAmountFieldValue){
         driver.findElement(invoiceAmountField).sendKeys(invoiceAmountFieldValue);
     }
 
+    public void clearInterestRate(){
+        driver.findElement(interestRate).clear();
+    }
+
     public void setInterestRate(String interestRateValue){
         driver.findElement(interestRate).sendKeys(interestRateValue);
+    }
+
+    public void clearCommissionFee(){
+        driver.findElement(commissionFee).clear();
     }
 
     public void setCommissionFee(String commissionFeeValue){
@@ -88,4 +100,5 @@ public class FactoringCalculatorPage {
     public String getCalculatorResult(){
         return driver.findElement(calculatorResult).getText();
     }
+
 }

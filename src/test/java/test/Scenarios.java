@@ -13,6 +13,7 @@ import pages.FactoringCalculatorPage;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 @Slf4j
 public class Scenarios {
@@ -32,7 +33,7 @@ public class Scenarios {
 
 
     @Given("As a Swedbank user I open Factoring Calculator page and close the Cookies popup")
-    public void userNavigatesToTheCalculatorPage() throws InterruptedException {
+    public void navigateToTheCalculatorPage() throws InterruptedException {
         log.info("Factoring calculator: " + calcPage.getURL() + " page is opening");
         driver.get(calcPage.getURL());
         driver.manage().window().maximize();
@@ -42,12 +43,46 @@ public class Scenarios {
         Thread.sleep(10000);
     }
 
+    @And("input {string} invoice amount")
+    public void inputInvoiceAmount(String invoiceAmount) {
+        log.info("Clear default values");
+        calcPage.clearInvoiceAmountField();
+        log.info("User inputs " + invoiceAmount + " invoice amount");
+        calcPage.setInvoiceAmountField(invoiceAmount);
+    }
+
+    @And("input {string} interest rate")
+    public void inputInterestRate(String interestRate) {
+        log.info("Clear default values");
+        calcPage.clearInterestRate();
+        log.info("User inputs " + interestRate + " interesd rate");
+        calcPage.setInterestRate(interestRate);
+    }
+
+    @And("input {string} commission fee")
+    public void inputCommissionFee(String commissionFee) {
+        log.info("Clear default values");
+        calcPage.clearCommissionFee();
+        log.info("User inputs " + commissionFee + " commission fee");
+        calcPage.setCommissionFee(commissionFee);
+    }
+
+    @And("select {int} advance rate")
+    public void selectAdvanceRate(int advanceRate) {
+        log.info("User selects " + advanceRate + " advance rate");
+        calcPage.selectAdvanceRate(advanceRate);
+    }
+
+    @And("select {int} payment term")
+    public void selectPaymentTerms(int paymentTerm) {
+        log.info("User selects " + paymentTerm + " payment term");
+        calcPage.selectPaymentTerm(paymentTerm);
+    }
 
     @And("click on the Calculate button")
     public void clickOnCalculateButton() {
         calcPage.clickCalculateButton();
     }
-
 
     @Then("{string} percent and {string} values are calculated")
     public void checkCalculatedValues(String expectedPercentResult, String expectedResult) {
