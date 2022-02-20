@@ -6,7 +6,7 @@ Feature: User should be able to use Factoring calculator to find out invoice fin
 
 
   Scenario: User is getting correct calculated default results
-    And click on the Calculate button
+    When click on the Calculate button
     Then "0.53" percent and "52.50" values are calculated
 
 
@@ -16,7 +16,7 @@ Feature: User should be able to use Factoring calculator to find out invoice fin
     And input "<interestRate>" interest rate
     And select <paymentTerm> payment term
     And input "<commissionFee>" commission fee
-    And click on the Calculate button
+    When click on the Calculate button
     Then "<expectedResultPercent>" percent and "<expectedResult>" values are calculated
     Examples:
       | invoiceAmount | advanceRate | interestRate | paymentTerm | commissionFee | expectedResultPercent | expectedResult |

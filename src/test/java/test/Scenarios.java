@@ -5,15 +5,14 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.CookiesPopup;
 import pages.FactoringCalculatorPage;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 @Slf4j
 public class Scenarios {
@@ -79,7 +78,7 @@ public class Scenarios {
         calcPage.selectPaymentTerm(paymentTerm);
     }
 
-    @And("click on the Calculate button")
+    @When("click on the Calculate button")
     public void clickOnCalculateButton() {
         calcPage.clickCalculateButton();
     }
