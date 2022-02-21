@@ -20,6 +20,13 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
+test.doFirst {
+    systemProperty "webdriver.chrome.driver",
+            classpath.find {
+                it.name.contains("chromedriver")
+            }
+}
+
 test {
     group 'Verification'
     description 'Runs functional tests'

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+
 public class FactoringCalculatorPage {
     WebDriver driver;
     private String FactoringCalculatorURL = "https://www.swedbank.lt/business/finance/trade/factoring?language=ENG";
@@ -20,6 +21,8 @@ public class FactoringCalculatorPage {
     By calculateButton = By.xpath("//*[@id=\"calculate-factoring\"]");
     By calculatorResultPercent = By.xpath("//*[@id=\"result_perc\"]");
     By calculatorResult = By.xpath("//*[@id=\"result\"]");
+    By invoiceAmountValidationMessage =  By.cssSelector("#calc > dl > dd:nth-child(2) > div");
+
 
 
     public FactoringCalculatorPage(WebDriver driver) {
@@ -48,6 +51,13 @@ public class FactoringCalculatorPage {
         }
     }
 
+    public boolean checkAdvanceRate(){
+        return driver.findElement(advanceRateField75).isDisplayed()
+                & driver.findElement(advanceRateField80).isDisplayed()
+                & driver.findElement(advanceRateField85).isDisplayed()
+                & driver.findElement(advanceRateField90).isDisplayed();
+    }
+
     public void selectPaymentTerm(int paymentTerm) {
         switch (paymentTerm) {
             case 30:
@@ -65,12 +75,24 @@ public class FactoringCalculatorPage {
         }
     }
 
+    public boolean checkPaymentTerm(){
+        return driver.findElement(paymentTerm30).isDisplayed()
+                & driver.findElement(paymentTerm60).isDisplayed()
+                & driver.findElement(paymentTerm90).isDisplayed()
+                & driver.findElement(paymentTerm120).isDisplayed();
+    }
+
     public void clearInvoiceAmountField(){
         driver.findElement(invoiceAmountField).clear();
     }
 
+
     public void setInvoiceAmountField(String invoiceAmountFieldValue){
         driver.findElement(invoiceAmountField).sendKeys(invoiceAmountFieldValue);
+    }
+
+    public boolean checkInvoiceAmountField(){
+        return driver.findElement(invoiceAmountField).isDisplayed();
     }
 
     public void clearInterestRate(){
@@ -81,6 +103,10 @@ public class FactoringCalculatorPage {
         driver.findElement(interestRate).sendKeys(interestRateValue);
     }
 
+    public boolean checkInterestRate(){
+        return driver.findElement(interestRate).isDisplayed();
+    }
+
     public void clearCommissionFee(){
         driver.findElement(commissionFee).clear();
     }
@@ -89,8 +115,16 @@ public class FactoringCalculatorPage {
         driver.findElement(commissionFee).sendKeys(commissionFeeValue);
     }
 
+    public boolean checkCommissionFee(){
+        return driver.findElement(commissionFee).isDisplayed();
+    }
+
     public void clickCalculateButton(){
         driver.findElement(calculateButton).click();
+    }
+
+    public boolean checkCalculateButton(){
+        return driver.findElement(calculateButton).isDisplayed();
     }
 
     public String getCalculatorResultPercent(){
@@ -99,6 +133,10 @@ public class FactoringCalculatorPage {
 
     public String getCalculatorResult(){
         return driver.findElement(calculatorResult).getText();
+    }
+
+    public String getValidationMessage(){
+        return driver.findElement(invoiceAmountValidationMessage).getText();
     }
 
 }
