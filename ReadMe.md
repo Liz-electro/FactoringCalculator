@@ -1,4 +1,4 @@
-##Description:
+## Description:
 That is UI test automation framework for Factoring Calculator, covering basic use cases.
 Tests are running in Chrome.
 
@@ -6,17 +6,17 @@ Path to cucumber test cases:
 
 'src/test/resources/features/FactoringCalculatorTest.feature'
 
-##Run test cases:
+## Run test cases:
 
 './Gradlew :cleanTest :test --tests "Runner"'
 
 './Gradlew :cleanTest :test'
 
-##Technologies:
+## Technologies:
 * Cucumber 
 * Selenium
 * Lombok
 * AssertJ
 
-##Chrome driver version
+## Chrome driver version
 CHROME_DRIVER_VERSION = 98.0.4758.102
